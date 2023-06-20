@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:rewup/service/internet_connection_service.dart';
 import 'package:rewup/splashscreen.dart';
 import 'package:rewup/utils/constants.dart';
 import 'package:rewup/utils/routes.dart';
@@ -10,6 +11,9 @@ import 'allpackages.dart';
 
 Future main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+   final ConnectivityService connectivityService = ConnectivityService();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await checkLogin();
 
   runApp(MyApp());
@@ -24,7 +28,8 @@ checkLogin() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+   MyApp({Key? key,this.connectivityService}) : super(key: key);
+       ConnectivityService ? connectivityService;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +40,9 @@ class MyApp extends StatelessWidget {
               LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
             },
             child: GetMaterialApp(
-              getPages: Routes.routes,
-                debugShowCheckedModeBanner: false, home: SplashScreen())),
+                getPages: Routes.routes,
+                debugShowCheckedModeBanner: false,
+                home: SplashScreen())),
       ),
     );
   }

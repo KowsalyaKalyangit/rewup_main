@@ -169,7 +169,7 @@ class _DetailsSectionState extends State<DetailsSection> {
               //   right: 20,
               // ),
               child: TextFormField(
-                enabled: false,
+                // enabled: false,
                 controller: profileController.email,
                 style: GoogleFonts.poppins(
                     textStyle: TextStyle(

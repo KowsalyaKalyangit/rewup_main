@@ -23,6 +23,7 @@ class CustomerChatDetailsController extends GetxController {
         _listData.add(data);
 
         ischatsurveyLoading(false);
+        //Get.back();
       } else {
         ischatsurveyLoading(false);
         Get.back();

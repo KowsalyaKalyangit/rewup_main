@@ -11,14 +11,12 @@ import '../model/customer_details_model.dart';
 import '../utils/constants.dart';
 
 class CustomerDetailsService {
-  Future<CustomerDetailsModel?> getCustomerDetailsService(
-      ) async {
+  Future<CustomerDetailsModel?> getCustomerDetailsService() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var storeid = sharedPreferences.getString(Constants.storeid);
     var body = {
       "dashboard": "getcustomerdata",
       "storeid": storeid ?? '',
-   
     };
     var bodyencode = json.encode(body);
 
@@ -34,8 +32,7 @@ class CustomerDetailsService {
       var data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        return CustomerDetailsModel.fromJson(
-            jsonDecode(response.body));
+        return CustomerDetailsModel.fromJson(jsonDecode(response.body));
       } else {
         Fluttertoast.showToast(msg: data["message"]);
         return null;

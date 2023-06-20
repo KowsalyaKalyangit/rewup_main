@@ -7,4 +7,5 @@ class Constants {
   static const storeid = 'storeid';
   static const chatid = 'chatid';
   static const userid = 'userid';
+  static const username = 'username';
 }

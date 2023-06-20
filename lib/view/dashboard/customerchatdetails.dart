@@ -59,30 +59,30 @@ class _CustomerchatDetailsState extends State<CustomerchatDetails> {
                         color: screenbackground,
                       )),
                 ),
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.shopping_cart,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.notifications_on,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                ],
+                // actions: [
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.shopping_cart,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.notifications_on,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                // ],
                 title: Text(
                   'Customer Chat Details',
                   style: heading,
@@ -147,7 +147,7 @@ class _CustomerchatDetailsState extends State<CustomerchatDetails> {
                   //   ],
                   // ),
                   Container(
-                    height: 900.h,
+                    height: 1000.h,
                     width: 500.w,
                     child: ListView.builder(
                         itemCount: CustomerchatDetailsController

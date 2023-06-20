@@ -43,6 +43,8 @@ class LoginController extends GetxController {
           // var storeid = _sharedPreferences.getString(Constants.storeid);
           _sharedPreferences.setString(
               Constants.userid, response.userid.toString());
+          _sharedPreferences.setString(
+              Constants.username, response.username.toString());
 
           Get.to(HomeScreen());
           isloginLoad(false);

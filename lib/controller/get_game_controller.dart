@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 
 import 'package:rewup/model/getgame_details_model.dart';
@@ -10,6 +12,8 @@ class GameController extends GetxController {
   List<GameDetailsModel> get listData => _listData;
   RxBool isgameLoading = true.obs;
   Map map = {};
+  var index = 0;
+  List<String> imageUrls = [];
   Future getGameController(storeid) async {
     isgameLoading(true);
     try {
@@ -19,6 +23,13 @@ class GameController extends GetxController {
       if (data != null) {
         _listData.add(data);
 
+        // for (var item in _listData) {
+        //   imageUrls.add(item.data[index].gameimage);
+        // }
+
+        update();
+        print('++++++++++++++++');
+        print(imageUrls);
         isgameLoading(false);
       } else {}
     } catch (e) {

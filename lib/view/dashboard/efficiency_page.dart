@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../allpackages.dart';
 import '../../utils/constants.dart';
+import 'package:flutter_charts/flutter_charts.dart';
 
 class BarChartExample extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _BarChartExampleState extends State<BarChartExample> {
         );
       } else {
         return Container(
-          height: 250.0.h,
+          height: 230.0.h,
           width: 500.0.w,
           child: ListView.builder(
               physics: NeverScrollableScrollPhysics(),
@@ -58,7 +59,7 @@ class _BarChartExampleState extends State<BarChartExample> {
                           barTouchData: BarTouchData(enabled: false),
 
                           //  barTouchData: BarTouchData(),
-                          maxY: 60,
+                          maxY: data.totalcustomers.toDouble() + 200,
                           minY: 0,
                           titlesData: FlTitlesData(
                               show: true,
@@ -100,6 +101,23 @@ class _BarChartExampleState extends State<BarChartExample> {
                                   color: Colors.green)
                             ]),
                           ])),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          data.totalcustomers.toString(),
+                          style: tablestyle,
+                        ),
+                        Text(
+                          data.repeatcustomers.toString(),
+                          style: tablestyle,
+                        ),
+                        Text(
+                          data.utilized.toString(),
+                          style: tablestyle,
+                        ),
+                      ],
                     )
                   ],
                 );

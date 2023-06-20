@@ -39,37 +39,37 @@ class _StoreDetailsPageState extends State<StoreDetailsPage> {
             padding: const EdgeInsets.all(10.0),
             child: InkWell(
                 onTap: () {
-                  Get.back();
+               Get.offAll(HomeScreen());
                 },
                 child: const Icon(
                   Icons.arrow_back,
                   color: screenbackground,
                 )),
           ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 15.0),
-              child: InkWell(
-                onTap: (() {}),
-                child: Icon(
-                  Icons.shopping_cart,
-                  color: screenbackground,
-                  size: 22,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(right: 15.0),
-              child: InkWell(
-                onTap: (() {}),
-                child: Icon(
-                  Icons.notifications_on,
-                  color: screenbackground,
-                  size: 22,
-                ),
-              ),
-            ),
-          ],
+          // actions: [
+          //   Padding(
+          //     padding: EdgeInsets.only(right: 15.0),
+          //     child: InkWell(
+          //       onTap: (() {}),
+          //       child: Icon(
+          //         Icons.shopping_cart,
+          //         color: screenbackground,
+          //         size: 22,
+          //       ),
+          //     ),
+          //   ),
+          //   Padding(
+          //     padding: EdgeInsets.only(right: 15.0),
+          //     child: InkWell(
+          //       onTap: (() {}),
+          //       child: Icon(
+          //         Icons.notifications_on,
+          //         color: screenbackground,
+          //         size: 22,
+          //       ),
+          //     ),
+          //   ),
+          // ],
           title: Text(
             'Store Details',
             style: heading,

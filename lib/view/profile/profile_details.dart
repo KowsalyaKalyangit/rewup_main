@@ -17,7 +17,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.offAll(HomePage());
+        Get.offAll(HomeScreen());
         return true;
       },
       child: Scaffold(
@@ -49,11 +49,11 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                     const OptionList(),
                     const SizedBox(
-                      height: 10,
+                      height: 80,
                     ),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.065,
-                      width: MediaQuery.of(context).size.width * 0.95,
+                      width: MediaQuery.of(context).size.width * 0.55,
                       decoration: BoxDecoration(
                           color: appbarcolor,
                           border: Border.all(

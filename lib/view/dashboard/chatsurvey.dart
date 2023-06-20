@@ -57,30 +57,30 @@ class _ChatSurveyState extends State<ChatSurvey> {
                         color: screenbackground,
                       )),
                 ),
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.shopping_cart,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.notifications_on,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                ],
+                // actions: [
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.shopping_cart,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.notifications_on,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                // ],
                 title: Text(
                   'Chat Survey',
                   style: heading,

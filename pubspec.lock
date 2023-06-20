@@ -105,6 +105,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
+  connectivity_plus:
+    dependency: "direct main"
+    description:
+      name: connectivity_plus
+      sha256: "8599ae9edca5ff96163fca3e36f8e481ea917d1e71cdad912c084b5579913f34"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
+  connectivity_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: connectivity_plus_platform_interface
+      sha256: cf1d1c28f4416f8c654d7dc3cd638ec586076255d407cef3ddbdaf178272a71a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.4"
   convert:
     dependency: transitive
     description:
@@ -137,6 +153,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  dbus:
+    dependency: transitive
+    description:
+      name: dbus
+      sha256: "6f07cba3f7b3448d42d015bfd3d53fe12e5b36da2423f23838efc1d5fb31a263"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.8"
+  decimal:
+    dependency: transitive
+    description:
+      name: decimal
+      sha256: eece91944f523657c75a3a008a90ec7f7eb3986191153a78570c7d0ac8ef3d01
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   device_info_plus:
     dependency: transitive
     description:
@@ -214,6 +246,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
+  flutter_charts:
+    dependency: "direct main"
+    description:
+      name: flutter_charts
+      sha256: b5d60dcd3d10e2d6f3beeb1339d1e382a2abeb76e8bf8c764111606fc44b48af
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1"
   flutter_faq:
     dependency: "direct main"
     description:
@@ -352,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.8.0"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      sha256: "7ad7215c15420a102ec687bb320a7312afd449bac63bfb1c60d9787c27b9767f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   matcher:
     dependency: transitive
     description:
@@ -376,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  nm:
+    dependency: transitive
+    description:
+      name: nm
+      sha256: "2c9aae4127bdc8993206464fcc063611e0e36e72018696cd9631023a31b24254"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   octo_image:
     dependency: transitive
     description:
@@ -480,6 +536,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
+  persistent_bottom_nav_bar:
+    dependency: "direct main"
+    description:
+      name: persistent_bottom_nav_bar
+      sha256: e2e031e3366fde01511e372a9a19d720a9b252bb456e5c8d77a30d7a4a2ddfb0
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   petitparser:
     dependency: transitive
     description:
@@ -528,6 +592,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  rational:
+    dependency: transitive
+    description:
+      name: rational
+      sha256: ba58e9e18df9abde280e8b10051e4bce85091e41e8e7e411b6cde2e738d357cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
   rxdart:
     dependency: transitive
     description:
@@ -669,6 +741,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      sha256: a97ce2013f240b2f3807bcbaf218765b6f301c3eff91092bcfa23a039e7dd151
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   typed_data:
     dependency: transitive
     description:

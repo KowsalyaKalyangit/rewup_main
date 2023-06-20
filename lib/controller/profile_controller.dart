@@ -4,8 +4,10 @@ import 'package:rewup/model/edit_profile_model.dart';
 import 'package:rewup/service/edit_profile_service.dart';
 
 import 'package:rewup/service/profile_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/profile_model.dart';
+import '../utils/constants.dart';
 import 'login_controller.dart';
 
 class ProfileController extends GetxController {
@@ -23,6 +25,7 @@ class ProfileController extends GetxController {
 
   var _listData = <ProfileModel>[];
   var item = [];
+  var profileusername;
   List<ProfileModel> get listData => _listData;
   RxBool isProfileLoading = true.obs;
   RxBool editloading = true.obs;
@@ -47,6 +50,7 @@ class ProfileController extends GetxController {
         state.text = data.data[0].state;
         pincode.text = data.data[0].zip;
         country.text = data.data[0].country;
+        profileusername = data.data[0].username.toString();
 
         isProfileLoading(false);
         //Get.back();

@@ -44,7 +44,7 @@ class Datum {
   int customerId;
   int chatId;
   int questionId;
-  dynamic question;
+  String question;
   String answers;
 
   Datum({
@@ -52,7 +52,7 @@ class Datum {
     required this.customerId,
     required this.chatId,
     required this.questionId,
-    this.question,
+    required this.question,
     required this.answers,
   });
 

@@ -9,7 +9,7 @@ class CouponWonController extends GetxController {
   var _listData = <CouponWonModel>[];
   List<CouponWonModel> get listData => _listData;
   RxBool couponLoading = true.obs;
-  Map map = {};
+
   Future getCouponwonController() async {
     couponLoading(true);
     try {

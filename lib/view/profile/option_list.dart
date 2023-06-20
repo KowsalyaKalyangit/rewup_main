@@ -16,14 +16,13 @@ class OptionList extends StatefulWidget {
 
 class _OptionListState extends State<OptionList> {
   var menuoptions = [
-    'HOME',
     'GAME DETAILS',
     'STORE DETAILS',
     'COUPON DETAILS',
     'CHATSURVEY',
   ];
   var menuscreens = [
-    const HomePage(),
+    // const HomeScreen(),
     const GameDetailsPage(),
     const StoreDetailsPage(),
     const CouponDetailsPage(),
@@ -52,13 +51,13 @@ class _OptionListState extends State<OptionList> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: Container(
+                    height: 40.0.h,
                     width: 350.w,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(
                             width: 2, color: const Color(0xffF5F5F5))),
-                    padding:
-                        const EdgeInsets.only(left: 10, top: 15, bottom: 15),
+                    padding: const EdgeInsets.only(left: 10, top: 2, bottom: 2),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -66,7 +65,7 @@ class _OptionListState extends State<OptionList> {
                           children: [
                             Image.asset(
                               image[index],
-                              height: 35,
+                              height: 30,
                             ),
                             SizedBox(
                               width: 20.0.w,
@@ -91,7 +90,7 @@ class _OptionListState extends State<OptionList> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               )
             ],
           );

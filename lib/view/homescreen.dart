@@ -1,7 +1,13 @@
+import 'dart:async';
+import 'dart:io';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rewup/view/profile/profile_details.dart';
 
 import '../../../../allpackages.dart';
 import '../controller/login_controller.dart';
+import '../utils/helper_class.dart';
 import 'dashboard/game_details.dart';
 import 'dashboard/reportpage_csv.dart';
 import 'dashboard/store_details_page.dart';
@@ -56,167 +62,171 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        //appBar: getappbar(),
-        drawer: Drawer(
-          backgroundColor: screenbackground,
-          child: Column(children: [
-            UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: appcolor),
-                accountName: Text(
-                  'Tony Rajesh',
-                  style: TextStyle(fontSize: 18),
-                ),
-                accountEmail: Text(
-                  "tonyrajesh@gmail.com",
-                  style: TextStyle(
-                      color: screenbackground,
-                      decoration: TextDecoration.underline),
-                ),
-                //currentAccountPictureSize: Size.square(50),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage(
-                    'assets/images/profile.jpg',
+    //Fluttertoast.showToast(msg: string);
+    return WillPopScope(
+      onWillPop: Helper.of(context).onWillPop,
+      child: Scaffold(
+          key: _scaffoldKey,
+          //appBar: getappbar(),
+          drawer: Drawer(
+            backgroundColor: screenbackground,
+            child: Column(children: [
+              UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(color: appcolor),
+                  accountName: Text(
+                    'Tony Rajesh',
+                    style: TextStyle(fontSize: 18),
                   ),
-                )),
-            ListTile(
-              leading: const Icon(
-                Icons.storefront_outlined,
-                color: toptitlecolor,
-              ),
-              title: InkWell(
-                focusColor: Colors.blue.withOpacity(0.4),
-                onTap: () {
-                  Get.back();
-                  Get.to(StoreDetailsPage());
-                },
-                child: Container(
-                  width: 30.0.w,
-                  child: Text(
-                    'Store',
-                    style: TextStyle(color: Colors.black),
+                  accountEmail: Text(
+                    "tonyrajesh@gmail.com",
+                    style: TextStyle(
+                        color: screenbackground,
+                        decoration: TextDecoration.underline),
                   ),
-                ),
-              ),
-            ),
-            // ListTile(
-            //   leading: const Icon(
-            //     Icons.login,
-            //     color: toptitlecolor,
-            //   ),
-            //   title: InkWell(
-            //     focusColor: Colors.blue.withOpacity(0.4),
-            //     onTap: () {
-            //       Get.back();
-            //     },
-            //     child: Container(
-            //       width: 30.0.w,
-            //       child: Text(
-            //         'Login',
-            //         style: TextStyle(color: toptitlecolor),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            ListTile(
-              leading: const Icon(
-                Icons.logout_outlined,
-                color: toptitlecolor,
-              ),
-              title: InkWell(
-                focusColor: Colors.blue.withOpacity(0.4),
-                onTap: () {
-                  loginController.logout();
-                },
-                child: Container(
-                  width: 30.0.w,
-                  child: Text(
-                    'Logout ',
-                    style: TextStyle(color: toptitlecolor),
-                  ),
-                ),
-              ),
-
-              //UserAccountDrawerHeader
-            )
-          ]),
-        ),
-        backgroundColor: bgcolor,
-        body: _pages[_currentIndex]['page'],
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(left: 3.0, right: 3, bottom: 5),
-          child: BottomNavyBar(
-            containerHeight: 70,
-            selectedIndex: _currentIndex,
-            showElevation: false,
-            itemCornerRadius: 24,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            curve: Curves.easeIn,
-            onItemSelected: (index) => setState(() => _currentIndex = index),
-            items: <BottomNavyBarItem>[
-              BottomNavyBarItem(
-                icon: const Icon(
-                  Icons.home,
-                  size: 20,
-                ),
-                title: Text('Home'),
-                activeColor: appcolor,
-                textAlign: TextAlign.center,
-              ),
-              BottomNavyBarItem(
-                icon: const Icon(
-                  Icons.gamepad_outlined,
-                  size: 20,
-                ),
-                title: Text('Game'),
-                activeColor: appcolor,
-                textAlign: TextAlign.center,
-              ),
-              BottomNavyBarItem(
-                icon: const Icon(
-                  Icons.report_outlined,
-                  size: 20,
-                ),
-                title: Text('Report'),
-                activeColor: appcolor,
-                textAlign: TextAlign.center,
-              ),
-              BottomNavyBarItem(
-                icon: const Icon(
+                  //currentAccountPictureSize: Size.square(50),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: AssetImage(
+                      'assets/images/profile.jpg',
+                    ),
+                  )),
+              ListTile(
+                leading: const Icon(
                   Icons.storefront_outlined,
-                  size: 20,
+                  color: toptitlecolor,
                 ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 1.0),
-                  child: Text(
-                    'Store',
-                    // style: GoogleFonts.poppins(
-                    //     textStyle: TextStyle(
-                    //         letterSpacing: 1,
-                    //         fontSize: 9.00.sp,
-                    //         color: Colors.white,
-                    //         fontWeight: FontWeight.w700)),
+                title: InkWell(
+                  focusColor: Colors.blue.withOpacity(0.4),
+                  onTap: () {
+                    Get.back();
+                    Get.to(StoreDetailsPage());
+                  },
+                  child: Container(
+                    width: 30.0.w,
+                    child: Text(
+                      'Store',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
-                activeColor: appcolor,
-                textAlign: TextAlign.center,
               ),
-              BottomNavyBarItem(
-                icon: const Icon(
-                  Icons.person_outline,
-                  size: 20,
+              // ListTile(
+              //   leading: const Icon(
+              //     Icons.login,
+              //     color: toptitlecolor,
+              //   ),
+              //   title: InkWell(
+              //     focusColor: Colors.blue.withOpacity(0.4),
+              //     onTap: () {
+              //       Get.back();
+              //     },
+              //     child: Container(
+              //       width: 30.0.w,
+              //       child: Text(
+              //         'Login',
+              //         style: TextStyle(color: toptitlecolor),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              ListTile(
+                leading: const Icon(
+                  Icons.logout_outlined,
+                  color: toptitlecolor,
                 ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 1.0),
-                  child: Text('Profile'),
+                title: InkWell(
+                  focusColor: Colors.blue.withOpacity(0.4),
+                  onTap: () {
+                    loginController.logout();
+                  },
+                  child: Container(
+                    width: 30.0.w,
+                    child: Text(
+                      'Logout ',
+                      style: TextStyle(color: toptitlecolor),
+                    ),
+                  ),
                 ),
-                activeColor: appcolor,
-                textAlign: TextAlign.center,
-              ),
-            ],
+
+                //UserAccountDrawerHeader
+              )
+            ]),
           ),
-        ));
+          backgroundColor: bgcolor,
+          body: _pages[_currentIndex]['page'],
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(left: 3.0, right: 3, bottom: 5),
+            child: BottomNavyBar(
+              containerHeight: 70,
+              selectedIndex: _currentIndex,
+              showElevation: false,
+              itemCornerRadius: 24,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              curve: Curves.easeIn,
+              onItemSelected: (index) => setState(() => _currentIndex = index),
+              items: <BottomNavyBarItem>[
+                BottomNavyBarItem(
+                  icon: const Icon(
+                    Icons.home,
+                    size: 20,
+                  ),
+                  title: Text('Home'),
+                  activeColor: appcolor,
+                  textAlign: TextAlign.center,
+                ),
+                BottomNavyBarItem(
+                  icon: const Icon(
+                    Icons.gamepad_outlined,
+                    size: 20,
+                  ),
+                  title: Text('Game'),
+                  activeColor: appcolor,
+                  textAlign: TextAlign.center,
+                ),
+                BottomNavyBarItem(
+                  icon: const Icon(
+                    Icons.report_outlined,
+                    size: 20,
+                  ),
+                  title: Text('Report'),
+                  activeColor: appcolor,
+                  textAlign: TextAlign.center,
+                ),
+                BottomNavyBarItem(
+                  icon: const Icon(
+                    Icons.storefront_outlined,
+                    size: 20,
+                  ),
+                  title: const Padding(
+                    padding: EdgeInsets.only(left: 1.0),
+                    child: Text(
+                      'Store',
+                      // style: GoogleFonts.poppins(
+                      //     textStyle: TextStyle(
+                      //         letterSpacing: 1,
+                      //         fontSize: 9.00.sp,
+                      //         color: Colors.white,
+                      //         fontWeight: FontWeight.w700)),
+                    ),
+                  ),
+                  activeColor: appcolor,
+                  textAlign: TextAlign.center,
+                ),
+                BottomNavyBarItem(
+                  icon: const Icon(
+                    Icons.person_outline,
+                    size: 20,
+                  ),
+                  title: const Padding(
+                    padding: EdgeInsets.only(left: 1.0),
+                    child: Text('Profile'),
+                  ),
+                  activeColor: appcolor,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          )),
+    );
   }
 }
 
@@ -232,4 +242,35 @@ class _AddtoCartState extends State<AddtoCart> {
   Widget build(BuildContext context) {
     return Column();
   }
+}
+
+class MyConnectivity {
+  MyConnectivity._();
+
+  static final _instance = MyConnectivity._();
+  static MyConnectivity get instance => _instance;
+  final _connectivity = Connectivity();
+  final _controller = StreamController.broadcast();
+  Stream get myStream => _controller.stream;
+
+  void initialise() async {
+    ConnectivityResult result = await _connectivity.checkConnectivity();
+    _checkStatus(result);
+    _connectivity.onConnectivityChanged.listen((result) {
+      _checkStatus(result);
+    });
+  }
+
+  void _checkStatus(ConnectivityResult result) async {
+    bool isOnline = false;
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      isOnline = false;
+    }
+    _controller.sink.add({result: isOnline});
+  }
+
+  void disposeStream() => _controller.close();
 }

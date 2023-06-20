@@ -1,13 +1,17 @@
 import 'package:rewup/view/dashboard/coupondetails_page.dart';
 import 'package:rewup/view/dashboard/efficiency_page.dart';
 import 'package:rewup/view/dashboard/game_details.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../allpackages.dart';
 import '../controller/coupon_won_controller.dart';
+import '../controller/dashboard_controller.dart';
 import '../controller/getdetails_controller.dart';
 
+import '../utils/constants.dart';
 import 'dashboard/chatsurvey.dart';
 import 'dashboard/customer_details.dart';
+import 'dashboard/dashboard_list.dart';
 import 'dashboard/pie_chart.dart';
 
 class Categories extends StatefulWidget {
@@ -31,13 +35,6 @@ class _CategoriesState extends State<Categories> {
   DetailsController detailsController = Get.put(DetailsController());
   CouponWonController couponWonController = Get.put(CouponWonController());
 
-  @override
-  void initState() {
-    //  detailsController.getDetailController();
-
-    super.initState();
-  }
-
   // Group Value for Radio Button.
 
   @override
@@ -45,60 +42,11 @@ class _CategoriesState extends State<Categories> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-              height: 220.0.h,
-              width: 1000.0.w,
-              padding: EdgeInsets.all(5.0),
-              child: GridView.builder(
-                  shrinkWrap: true,
-                  // scrollDirection: Axis.vertical,
-
-                  ///physics: NeverScrollableScrollPhysics(),
-                  itemCount: count.length,
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 600 / 3,
-                      childAspectRatio: 5 / 3,
-                      crossAxisSpacing: 2,
-                      mainAxisSpacing: 5),
-                  itemBuilder: (BuildContext context, index) {
-                    //var listdata = detailsController.listData[index];
-                    return InkWell(
-                      onTap: () {
-                        if (index == 0) {
-                          Get.to(CouponDetailsPage());
-                        }
-
-                        if (index == 1) {
-                          Get.to(CustomerDetailsPage());
-                        }
-                        if (index == 2) {
-                          Get.to(ChatSurvey());
-                        }
-                      },
-                      child: Card(
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              // Container(
-                              //     height: 35.h,
-                              //     child: Image.asset(images[index])),
-                              Text(
-                                categorynames[index],
-                                style: homepagecount,
-                              ),
-                              Text(
-                                count[index].toString(),
-                                style: homepagecountcolor,
-                              ),
-                            ]),
-                      ),
-                    );
-                  })),
+          DashboardList(),
           Padding(
-            padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: Container(
-              height: 340.h,
+              height: 330.h,
               width: 1000.w,
               child: Card(
                 child: Padding(
@@ -171,7 +119,7 @@ class _CategoriesState extends State<Categories> {
                         ],
                       ),
                       SizedBox(
-                        height: 10.0.h,
+                        height: 20.0.h,
                       ),
                       // EffieciencyPage(),
                       // Container(

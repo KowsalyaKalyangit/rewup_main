@@ -59,7 +59,7 @@ class _PieChartPageState extends State<PieChartPage> {
   Widget build(BuildContext context) {
     return Obx(() {
       if (pieChartcontroller.ispieLoad.value) {
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator());
       } else if (pieChartcontroller.listData.isEmpty) {
         return Text('No Data Found');
       } else {
@@ -127,7 +127,7 @@ class _PieChartPageState extends State<PieChartPage> {
                 height: 100.0.h,
                 width: 150.0.w,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Row(
                       children: [
@@ -140,7 +140,7 @@ class _PieChartPageState extends State<PieChartPage> {
                           width: 10.0.w,
                         ),
                         Text(
-                          'totalcouponwon',
+                          'Total Couponwon',
                           style: tablestyle,
                         )
                       ],
@@ -155,7 +155,7 @@ class _PieChartPageState extends State<PieChartPage> {
                           width: 10.0.w,
                         ),
                         Text(
-                          'totalcouponutilized',
+                          'Total Couponutilized',
                           style: tablestyle,
                         )
                       ],
@@ -171,7 +171,7 @@ class _PieChartPageState extends State<PieChartPage> {
                           width: 10.0.w,
                         ),
                         Text(
-                          'totalcouponunutilized',
+                          'Total Couponunutilized',
                           style: tablestyle,
                         )
                       ],

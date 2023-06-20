@@ -84,7 +84,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               )),
                           child: const DetailsSection()),
                     ),
-                    const ProfileImage(),
+                      const ProfileImage(),
                   ],
                 ),
               ]),

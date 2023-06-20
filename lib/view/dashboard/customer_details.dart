@@ -54,30 +54,30 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
                         color: screenbackground,
                       )),
                 ),
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.shopping_cart,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.notifications_on,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                ],
+                // actions: [
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.shopping_cart,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.notifications_on,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                // ],
                 title: Text(
                   'Customer Details',
                   style: heading,
@@ -87,35 +87,77 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 65.0.h,
-                    width: 1000.0.w,
-                    decoration: BoxDecoration(
-                        color: Color(0xff423592).withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Customer Name',
-                              style: tablestyle,
-                            ),
-                            Text(
-                              'Email_id',
-                              style: tablestyle,
-                            ),
-                            Text(
-                              'Phone Number',
-                              style: tablestyle,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  Obx(() {
+                    if (customerDetailsController.isCustomerloading.value) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (customerDetailsController.listData.isEmpty) {
+                      return Center(
+                        child: Text('NO DATA FOUND'),
+                      );
+                    } else {
+                      return Container(
+                          height: 30.0.h,
+                          width: 500.0.w,
+                          decoration: BoxDecoration(
+                              color: Color(0xff423592).withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: ListView.builder(
+                              itemCount:
+                                  customerDetailsController.listData.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Container(
+                                        width: 50.0.w,
+                                        child: Text(
+                                          customerDetailsController
+                                              .listData[0].title[0].title1
+                                              .toString(),
+                                          style: profiletext,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 100.0.w,
+                                        child: Text(
+                                          customerDetailsController
+                                              .listData[0].title[0].title2
+                                              .toString(),
+                                          style: profiletext,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 50.0.w,
+                                        child: Text(
+                                          customerDetailsController
+                                              .listData[0].title[0].title3
+                                              .toString(),
+                                          style: profiletext,
+                                        ),
+                                      ),
+                                      // SizedBox(
+                                      //   width: 10.0.w,
+                                      // )
+                                      // Container(
+                                      //   // width: 120.0.w,
+                                      //   child: Text(
+                                      //     couponController
+                                      //         .listData[0].title[index].title4
+                                      //         .toString(),
+                                      //     style: viewdetails,
+                                      //   ),
+                                      // ),
+                                    ],
+                                  ),
+                                );
+                              }));
+                    }
+                  }),
                   Container(
                     height: 900.h,
                     width: 500.w,
@@ -125,7 +167,7 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
                             customerDetailsController.listData[0].data.length,
                         itemBuilder: (context, index) {
                           return Container(
-                            height: 70.0.h,
+                            height: 40.0.h,
                             width: 500.0.w,
                             //  margin: EdgeInsets.all(5),
                             child: InkWell(
@@ -136,7 +178,8 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
                                 //         .toString()));
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, right: 10.0),
                                 child: Container(
                                     child: Card(
                                         elevation: 0.5,
@@ -145,7 +188,7 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
                                               MainAxisAlignment.spaceAround,
                                           children: [
                                             Container(
-                                                width: 80.0.w,
+                                                width: 50.0.w,
                                                 child: Row(
                                                   children: <Widget>[
                                                     Flexible(

@@ -1,10 +1,10 @@
 import 'package:rewup/view/dashboard/customerchatdetails.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+ 
 
 import '../../allpackages.dart';
 
 import '../../controller/survey_customerdetails_controller.dart';
-import '../../utils/constants.dart';
+ 
 
 class ChatSurveyCustomerDetails extends StatefulWidget {
   const ChatSurveyCustomerDetails({super.key, this.chatid});
@@ -25,8 +25,8 @@ class _ChatSurveyCustomerDetailsState extends State<ChatSurveyCustomerDetails> {
   }
 
   fun() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var storeid = sharedPreferences.getString(Constants.storeid);
+    // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //  var storeid = sharedPreferences.getString(Constants.storeid);
     chatSurveyCustomerDetailsController
         .getChatSurveyCustomerDetailsController(widget.chatid.toString());
   }
@@ -61,30 +61,30 @@ class _ChatSurveyCustomerDetailsState extends State<ChatSurveyCustomerDetails> {
                         color: screenbackground,
                       )),
                 ),
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.shopping_cart,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      onTap: (() {}),
-                      child: Icon(
-                        Icons.notifications_on,
-                        color: screenbackground,
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                ],
+                // actions: [
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.shopping_cart,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                //   Padding(
+                //     padding: EdgeInsets.only(right: 15.0),
+                //     child: InkWell(
+                //       onTap: (() {}),
+                //       child: Icon(
+                //         Icons.notifications_on,
+                //         color: screenbackground,
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                // ],
                 title: Text(
                   'Customer Details',
                   style: heading,
@@ -149,7 +149,7 @@ class _ChatSurveyCustomerDetailsState extends State<ChatSurveyCustomerDetails> {
                   //   ],
                   // ),
                   Container(
-                    height: 900.h,
+                    height: 1000.h,
                     width: 500.w,
                     child: ListView.builder(
                         itemCount: chatSurveyCustomerDetailsController
