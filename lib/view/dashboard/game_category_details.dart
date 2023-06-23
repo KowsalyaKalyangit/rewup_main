@@ -78,10 +78,14 @@ class _GameCategoriesDetailsState extends State<GameCategoriesDetails> {
                       child: Container(
                         height: 300.0.h,
                         width: 400.0.w,
-                        child: Image.network(
-                          gameimageController.imageUrls[textindex].toString(),
-                          fit: BoxFit.fill,
-                        ),
+                        child: gameimageController.imageUrls[textindex] == ''
+                            ? Image.network(gameimageController
+                                .listData[0].data[0].welcomeimage)
+                            : Image.network(
+                                gameimageController.imageUrls[textindex]
+                                    .toString(),
+                                fit: BoxFit.fill,
+                              ),
                       ),
                     ),
                     Positioned(
@@ -109,11 +113,6 @@ class _GameCategoriesDetailsState extends State<GameCategoriesDetails> {
                                   child: Container(
                                     width: 100.00.w,
                                     decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1,
-                                            color: textindex == index
-                                                ? appcolor
-                                                : screenbackground),
                                         image: DecorationImage(
                                             fit: BoxFit.fill,
                                             image: NetworkImage(

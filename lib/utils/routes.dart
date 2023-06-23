@@ -6,7 +6,7 @@ class Routes {
   static final routes = [
     // GetPage(name: '/', page: () => SplashScreen()),
 
-    GetPage(name: '/home', page: () => const HomeScreen()),
+    GetPage(name: '/home', page: () =>   HomeScreen()),
     GetPage(name: '/couponwon', page: () => const CouponwonPage()),
       GetPage(name: '/couponreport', page: () => const ReportCouponPage()),
 

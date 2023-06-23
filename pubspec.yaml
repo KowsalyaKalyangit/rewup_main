@@ -56,6 +56,9 @@ dependencies:
   connectivity_plus: ^4.0.1
   persistent_bottom_nav_bar: ^5.0.2
   flutter_charts: ^0.5.1
+  shimmer: ^3.0.0
+  calendar_date_picker2: ^0.5.2
+  text_scroll: ^0.2.0
  
    
 

@@ -5,7 +5,9 @@ import '../../allpackages.dart';
 import '../dashboard/chatsurvey.dart';
 import '../dashboard/chatsurvey_customerdetails.dart';
 import '../dashboard/coupondetails_page.dart';
+import '../dashboard/email_templates/emial_template.dart';
 import '../dashboard/store_details_page.dart';
+import '../reset_password/create_password.dart';
 
 class OptionList extends StatefulWidget {
   const OptionList({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _OptionListState extends State<OptionList> {
     'STORE DETAILS',
     'COUPON DETAILS',
     'CHATSURVEY',
+    'CHANGE PASSWORD',
+    'EMAIL TEMPLATES'
   ];
   var menuscreens = [
     // const HomeScreen(),
@@ -27,12 +31,16 @@ class _OptionListState extends State<OptionList> {
     const StoreDetailsPage(),
     const CouponDetailsPage(),
     const ChatSurvey(),
+    CreatenewPassword(),
+    EmailTemplate()
   ];
   var image = [
     'assets/images/homepage.png',
     'assets/images/game.png',
     'assets/images/store.png',
     'assets/images/coupon.png',
+    'assets/images/chat.png',
+    'assets/images/chat.png',
     'assets/images/chat.png',
   ];
   @override

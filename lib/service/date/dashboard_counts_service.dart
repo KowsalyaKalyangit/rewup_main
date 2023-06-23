@@ -4,18 +4,22 @@ import 'dart:developer';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
-import '../model/dashboard_model.dart';
-import '../model/graph_model.dart';
-import '../utils/constants.dart';
+import '../../model/date/dashboard_count_model.dart';
+import '../../utils/constants.dart';
 
-class DashboardService {
-  Future<DashboardModel?> dashboardService(
-      {dashboard, storeid, fromdate, todate}) async {
+ 
+
+ 
+
+class DashboardCountService {
+  Future<DashboardDateModel?> dashboardCountService(
+      {dashboard, storeid,fromdate,todate}) async {
     var body = {
       "dashboard": dashboard ?? "",
-      "storeid": storeid ?? '',
-      "fromdate": fromdate ?? '',
-      "todate": todate ?? ''
+      "storeid": storeid??'',
+      "fromdate":fromdate??'',
+      "todate":todate??''
+     
     };
     var bodyencode = json.encode(body);
 
@@ -31,7 +35,8 @@ class DashboardService {
       var data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        return DashboardModel.fromJson(jsonDecode(response.body));
+        return DashboardDateModel.fromJson(
+            jsonDecode(response.body));
       } else {
         Fluttertoast.showToast(msg: data["message"]);
         return null;

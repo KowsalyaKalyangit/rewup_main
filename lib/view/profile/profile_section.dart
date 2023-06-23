@@ -41,18 +41,33 @@ class _ProfileSectionState extends State<ProfileSection> {
           padding: const EdgeInsets.only(left: 18.0),
           child: Row(
             children: [
-              const CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 34.0,
-                child: CircleAvatar(
-                  backgroundColor: appbarcolor,
-                  radius: 32.0,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/profile.jpg'),
-                    radius: 28.0,
-                  ),
-                ),
-              ),
+              Obx(() {
+                if (profileController.isProfileLoading.value) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (profileController.listData.isEmpty) {
+                  return Center(
+                    child: Text('No Data Found'),
+                  );
+                } else {
+                  return Center(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 35.0,
+                      child: CircleAvatar(
+                        backgroundColor: appbarcolor,
+                        radius: 33.0,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              profileController.listData[0].data[0].storeimg),
+                          radius: 32.0,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              }),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 3),
@@ -62,7 +77,7 @@ class _ProfileSectionState extends State<ProfileSection> {
                         child: Text(
                           profileController.username.text.isEmpty
                               ? 'Tony Rajesh'
-                              : profileController.username.text.toString(),
+                              : profileController.storename.value.toString(),
                           style: heading,
                         ),
                       ),

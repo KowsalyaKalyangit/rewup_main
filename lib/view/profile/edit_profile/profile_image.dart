@@ -12,6 +12,12 @@ class ProfileImage extends StatefulWidget {
 class _ProfileImageState extends State<ProfileImage> {
   ProfileController profileController = Get.put(ProfileController());
   @override
+  void initState() {
+    //profileController.getProfileController(userid: )
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Positioned(
       top: 50.00.h,
@@ -22,22 +28,34 @@ class _ProfileImageState extends State<ProfileImage> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Center(
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 55.0,
-                    child: CircleAvatar(
-                      backgroundColor: appbarcolor,
-                      radius: 52.0,
+              children: [
+                Obx(() {
+                  if (profileController.isProfileLoading.value) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (profileController.listData.isEmpty) {
+                    return Center(
+                      child: Text('No Data Found'),
+                    );
+                  } else {
+                    return Center(
                       child: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/profile.jpg'),
-                        radius: 50.0,
+                        backgroundColor: Colors.white,
+                        radius: 55.0,
+                        child: CircleAvatar(
+                          backgroundColor: appbarcolor,
+                          radius: 52.0,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                profileController.listData[0].data[0].storeimg),
+                            radius: 50.0,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
+                    );
+                  }
+                }),
               ],
             ),
             Row(

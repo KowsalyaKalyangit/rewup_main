@@ -38,6 +38,9 @@ class ProfileModel {
 }
 
 class Datum {
+  int storeid;
+  String storename;
+  String storeimg;
   int id;
   String firstname;
   String lastname;
@@ -52,6 +55,9 @@ class Datum {
   String country;
 
   Datum({
+    required this.storeid,
+    required this.storename,
+    required this.storeimg,
     required this.id,
     required this.firstname,
     required this.lastname,
@@ -67,6 +73,9 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        storeid: json["storeid"],
+        storename: json["storename"],
+        storeimg: json["storeimg"],
         id: json["id"],
         firstname: json["firstname"],
         lastname: json["lastname"],
@@ -82,6 +91,9 @@ class Datum {
       );
 
   Map<String, dynamic> toJson() => {
+        "storeid": storeid,
+        "storename": storename,
+        "storeimg": storeimg,
         "id": id,
         "firstname": firstname,
         "lastname": lastname,

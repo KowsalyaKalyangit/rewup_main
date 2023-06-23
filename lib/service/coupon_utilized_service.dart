@@ -3,19 +3,20 @@ import 'dart:developer';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/dashboard_model.dart';
-import '../model/graph_model.dart';
+import '../model/coupon_utilized_model.dart';
+import '../model/coupon_won_model.dart';
 import '../utils/constants.dart';
 
-class DashboardService {
-  Future<DashboardModel?> dashboardService(
-      {dashboard, storeid, fromdate, todate}) async {
+class CouponUtilizedService {
+  Future<CouponUtilizedModel?> getCouponutilizedService({dashboard}) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var storeid = sharedPreferences.getString(Constants.storeid);
+    print('Enterrrrrr');
     var body = {
       "dashboard": dashboard ?? "",
       "storeid": storeid ?? '',
-      "fromdate": fromdate ?? '',
-      "todate": todate ?? ''
     };
     var bodyencode = json.encode(body);
 
@@ -31,9 +32,8 @@ class DashboardService {
       var data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        return DashboardModel.fromJson(jsonDecode(response.body));
+        return CouponUtilizedModel.fromJson(data);
       } else {
-        Fluttertoast.showToast(msg: data["message"]);
         return null;
       }
     } catch (e) {

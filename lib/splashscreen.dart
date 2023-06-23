@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
             transitionDuration: const Duration(milliseconds: 500),
             pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation<double> secondaryAnimation) {
-              return const HomeScreen();
+              return   HomeScreen();
             },
             transitionsBuilder: (BuildContext context,
                 Animation<double> animation,
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
               return FadeTransition(
                 opacity:
                     animation, // CurvedAnimation(parent: animation, curve: Curves.elasticInOut),
-                child: const HomeScreen(),
+                child:   HomeScreen(),
               );
             },
           ),
@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
             transitionDuration: const Duration(milliseconds: 500),
             pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation<double> secondaryAnimation) {
-              return const HomeScreen();
+              return   HomeScreen();
             },
             transitionsBuilder: (BuildContext context,
                 Animation<double> animation,

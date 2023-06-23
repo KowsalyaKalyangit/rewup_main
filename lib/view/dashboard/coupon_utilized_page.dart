@@ -1,51 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rewup/controller/coupon_utilized_controller.dart';
 import 'package:rewup/controller/coupon_won_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/colors.dart';
+import '../../utils/constants.dart';
 import '../../utils/textstyles.dart';
 
-class CouponwonPage extends StatefulWidget {
-  const CouponwonPage({
+class CoupontilizedPage extends StatefulWidget {
+  const CoupontilizedPage({
     super.key,
   });
 
   @override
-  State<CouponwonPage> createState() => _CouponwonPageState();
+  State<CoupontilizedPage> createState() => _CoupontilizedPageState();
 }
 
-class _CouponwonPageState extends State<CouponwonPage> {
-  CouponWonController couponWonController = Get.put(CouponWonController());
+class _CoupontilizedPageState extends State<CoupontilizedPage> {
+  CouponUtilizedController couponUtilizedController =
+      Get.put(CouponUtilizedController());
 
-  // getfunc() async {
-  //   // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   // var storeid = sharedPreferences.getString(Constants.storeid);
-  //   await couponWonController.getCouponwonController();
-  // }
+  getfunc() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var storeid = sharedPreferences.getString(Constants.storeid);
+    await couponUtilizedController.getCouponutilizedController();
+  }
 
-  // @override
-  // void initState() {
-  //   setState(() {
-  //     getfunc();
-  //   });
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    setState(() {
+      getfunc();
+    });
+    super.initState();
+  }
 
-  // @override
-  // void dispose() {
-  //   couponWonController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    couponUtilizedController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (couponWonController.couponLoading.value) {
+      if (couponUtilizedController.couponLoading.value) {
         return Center(
           child: CircularProgressIndicator(),
         );
-      } else if (couponWonController.listData.isEmpty) {
+      } else if (couponUtilizedController.listData.isEmpty) {
         return Center(
           child: Text('NO DATA FOUND'),
         );
@@ -64,7 +68,7 @@ class _CouponwonPageState extends State<CouponwonPage> {
                       },
                       child: Icon(Icons.arrow_back))),
               title: Text(
-                'Coupon Won',
+                'Coupon Utilized',
                 style: heading,
               )),
           body: Padding(
@@ -75,11 +79,11 @@ class _CouponwonPageState extends State<CouponwonPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Obx(() {
-                    if (couponWonController.couponLoading.value) {
+                    if (couponUtilizedController.couponLoading.value) {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
-                    } else if (couponWonController.listData.isEmpty) {
+                    } else if (couponUtilizedController.listData.isEmpty) {
                       return Center(
                         child: Text('NO DATA FOUND'),
                       );
@@ -93,7 +97,7 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                 color: Color(0xff423592).withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(5)),
                             child: ListView.builder(
-                                itemCount: couponWonController
+                                itemCount: couponUtilizedController
                                     .listData[0].title.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
@@ -105,7 +109,7 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                         Container(
                                           width: 130.0.w,
                                           child: Text(
-                                            couponWonController
+                                            couponUtilizedController
                                                 .listData[0].title[index].title1
                                                 .toString(),
                                             style: tablestyle,
@@ -114,7 +118,7 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                         Container(
                                           width: 120.0.w,
                                           child: Text(
-                                            couponWonController
+                                            couponUtilizedController
                                                 .listData[0].title[index].title2
                                                 .toString(),
                                             style: tablestyle,
@@ -123,7 +127,7 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                         Container(
                                           // width: 120.0.w,
                                           child: Text(
-                                            couponWonController
+                                            couponUtilizedController
                                                 .listData[0].title[index].title3
                                                 .toString(),
                                             style: tablestyle,
@@ -137,11 +141,11 @@ class _CouponwonPageState extends State<CouponwonPage> {
                     }
                   }),
                   Obx(() {
-                    if (couponWonController.couponLoading.value) {
+                    if (couponUtilizedController.couponLoading.value) {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
-                    } else if (couponWonController.listData.isEmpty) {
+                    } else if (couponUtilizedController.listData.isEmpty) {
                       return Center(
                         child: Text('NO DATA FOUND'),
                       );
@@ -160,14 +164,15 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                     child: ListView.builder(
                                         shrinkWrap: true,
                                         physics: NeverScrollableScrollPhysics(),
-                                        itemCount: couponWonController
+                                        itemCount: couponUtilizedController
                                             .listData[0].data.length,
                                         itemBuilder: (context, index) {
-                                          var couponname = couponWonController
-                                              .listData[0].data[index];
+                                          var couponname =
+                                              couponUtilizedController
+                                                  .listData[0].data[index];
                                           return Container(
                                             height: 40.0.h,
-                                            width: 500.w,
+                                            width: 500.0.w,
                                             child: Card(
                                               child: Row(
                                                 mainAxisAlignment:
@@ -191,12 +196,12 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                                         ],
                                                       )),
                                                   Container(
-                                                      width: 50.0.w,
+                                                      width: 130.0.w,
                                                       child: Row(
                                                         children: <Widget>[
                                                           Flexible(
                                                             child: new Text(
-                                                              couponname.title
+                                                              couponname.email
                                                                   .toString(),
                                                               style:
                                                                   listtitlecolor,
@@ -205,13 +210,12 @@ class _CouponwonPageState extends State<CouponwonPage> {
                                                         ],
                                                       )),
                                                   Container(
-                                                      width: 100.0.w,
+                                                      width: 60.0.w,
                                                       child: Row(
                                                         children: <Widget>[
                                                           Flexible(
                                                             child: new Text(
-                                                              couponname
-                                                                  .timeAdded
+                                                              couponname.phone
                                                                   .toString(),
                                                               style:
                                                                   listtitlecolor,

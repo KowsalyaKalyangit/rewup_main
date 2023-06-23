@@ -5,6 +5,7 @@ import 'package:rewup/controller/graph_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../allpackages.dart';
+import '../../controller/dashboard_controller.dart';
 import '../../utils/constants.dart';
 import 'package:flutter_charts/flutter_charts.dart';
 
@@ -15,6 +16,7 @@ class BarChartExample extends StatefulWidget {
 
 class _BarChartExampleState extends State<BarChartExample> {
   GraphController graphController = Get.put(GraphController());
+  Dashboardcontroller dashboardcontroller = Get.put(Dashboardcontroller());
   var itemdata = ['No of customers', 'Repeaters', 'Utilized'];
   @override
   void initState() {
@@ -27,6 +29,7 @@ class _BarChartExampleState extends State<BarChartExample> {
     var storeid = sharedPreferences.getString(Constants.storeid);
     setState(() {
       graphController.getGraphController(storeid.toString());
+      dashboardcontroller.dahboardcontroller(storeid);
     });
   }
 

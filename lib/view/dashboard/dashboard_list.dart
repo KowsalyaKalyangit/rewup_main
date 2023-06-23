@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rewup/controller/date/dashboard_count_controller.dart';
 import 'package:rewup/view/dashboard/game_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,7 +10,9 @@ import '../../allpackages.dart';
 import '../../controller/dashboard_controller.dart';
 import '../../utils/constants.dart';
 import 'chatsurvey.dart';
+import 'coupon_utilized_page.dart';
 import 'coupondetails_page.dart';
+import 'couponwon_page.dart';
 import 'customer_details.dart';
 
 class DashboardList extends StatefulWidget {
@@ -21,6 +24,8 @@ class DashboardList extends StatefulWidget {
 
 class _DashboardListState extends State<DashboardList> {
   Dashboardcontroller dashboardcontroller = Get.put(Dashboardcontroller());
+  DashboardCountcontroller dashboardCountcontroller =
+      Get.put(DashboardCountcontroller());
 
   @override
   void initState() {
@@ -34,6 +39,7 @@ class _DashboardListState extends State<DashboardList> {
     var storeid = sharedPreferences.getString(Constants.storeid);
     setState(() {
       dashboardcontroller.dahboardcontroller(storeid.toString());
+      //   dashboardCountcontroller.dahboardCountcontroller(storeid, context);
     });
   }
 
@@ -78,18 +84,18 @@ class _DashboardListState extends State<DashboardList> {
                     return InkWell(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(CouponDetailsPage());
+                          Get.to(CouponwonPage());
                         }
 
                         if (index == 1) {
                           Get.to(CustomerDetailsPage());
                         }
-                        
+
                         if (index == 2) {
                           Get.to(GameDetailsPage());
                         }
                         if (index == 3) {
-                          Get.to(ChatSurvey());
+                          Get.to(CoupontilizedPage());
                         }
                       },
                       child: Card(
@@ -107,9 +113,14 @@ class _DashboardListState extends State<DashboardList> {
                                 style: homepagecount,
                               ),
                               Text(
-                                dashboardcontroller
-                                    .listData[0].data[index].total
-                                    .toString(),
+                                dashboardcontroller.fromdate.text == '' &&
+                                        dashboardcontroller.todate.text == ''
+                                    ? dashboardcontroller
+                                        .listData[0].data[index].total
+                                        .toString()
+                                    : dashboardcontroller
+                                        .listData[0].data[index].total
+                                        .toString(),
                                 style: homepagecountcolor,
                               ),
                             ]),

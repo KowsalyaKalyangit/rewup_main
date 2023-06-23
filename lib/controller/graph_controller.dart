@@ -14,7 +14,7 @@ class GraphController extends GetxController {
   List<GraphModel> get listData => _listData;
   RxBool isgraphLoading = true.obs;
   Map map = {};
-  Future getGraphController(storeid) async {
+  Future getGraphController(storeid,) async {
     isgraphLoading(true);
     try {
       _listData.clear();

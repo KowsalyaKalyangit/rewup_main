@@ -46,14 +46,14 @@ class Datum {
   String couponId;
   String redirectUrl;
   String redirectDescription;
-  int status;
+  String status;
   String qrcode;
   String welcomeimage;
-  String gameimage;
-  String couponwonimage;
   String store;
   String game;
   String coupon;
+  String? gameimage;
+  String? couponwonimage;
 
   Datum({
     required this.id,
@@ -65,11 +65,11 @@ class Datum {
     required this.status,
     required this.qrcode,
     required this.welcomeimage,
-    required this.gameimage,
-    required this.couponwonimage,
     required this.store,
     required this.game,
     required this.coupon,
+    this.gameimage,
+    this.couponwonimage,
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
@@ -82,11 +82,11 @@ class Datum {
         status: json["status"],
         qrcode: json["qrcode"],
         welcomeimage: json["welcomeimage"],
-        gameimage: json["gameimage"],
-        couponwonimage: json["couponwonimage"],
         store: json["store"],
         game: json["game"],
         coupon: json["coupon"],
+        gameimage: json["gameimage"],
+        couponwonimage: json["couponwonimage"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -99,10 +99,10 @@ class Datum {
         "status": status,
         "qrcode": qrcode,
         "welcomeimage": welcomeimage,
-        "gameimage": gameimage,
-        "couponwonimage": couponwonimage,
         "store": store,
         "game": game,
         "coupon": coupon,
+        "gameimage": gameimage,
+        "couponwonimage": couponwonimage,
       };
 }

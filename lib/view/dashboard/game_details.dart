@@ -175,8 +175,10 @@ class _GameDetailsPageState extends State<GameDetailsPage> {
                                                   borderRadius:
                                                       BorderRadius.circular(5),
                                                   child: Image.network(
-                                                    gameController.listData[0]
-                                                        .data[index].gameimage
+                                                    gameController
+                                                        .listData[0]
+                                                        .data[index]
+                                                        .welcomeimage
                                                         .toString(),
                                                     height: 50.0.h,
                                                     width: 50.0.w,
@@ -212,7 +214,40 @@ class _GameDetailsPageState extends State<GameDetailsPage> {
                                                               .data[index]
                                                               .store,
                                                           style: listStyle,
-                                                        )
+                                                        ),
+                                                        SizedBox(
+                                                          width: 40.0.w,
+                                                        ),
+                                                        Container(
+                                                            height: 20.0.h,
+                                                            width: 60.0.w,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5),
+                                                                color: gameController
+                                                                            .listData[
+                                                                                0]
+                                                                            .data[
+                                                                                index]
+                                                                            .status ==
+                                                                        'Active'
+                                                                    ? Color(
+                                                                        0xFFACEBD2)
+                                                                    : Color(
+                                                                        0xFFF3D9D9)),
+                                                            child: Center(
+                                                              child: Text(
+                                                                gameController
+                                                                    .listData[0]
+                                                                    .data[index]
+                                                                    .status
+                                                                    .toString(),
+                                                                style:
+                                                                    listStyle,
+                                                              ),
+                                                            ))
                                                       ],
                                                     ),
                                                     Row(

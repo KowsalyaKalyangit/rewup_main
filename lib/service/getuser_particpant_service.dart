@@ -1,28 +1,29 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/dashboard_model.dart';
-import '../model/graph_model.dart';
+import '../model/userparticpant_model.dart';
 import '../utils/constants.dart';
 
-class DashboardService {
-  Future<DashboardModel?> dashboardService(
-      {dashboard, storeid, fromdate, todate}) async {
+class UserparticipantService {
+  Future<UserParticipantModel?> getUserparticipantService({dashboard}) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var storeid = sharedPreferences.getString(Constants.storeid);
+    var username = sharedPreferences.getString(Constants.userid);
+    print('Enterrrrrr');
     var body = {
       "dashboard": dashboard ?? "",
       "storeid": storeid ?? '',
-      "fromdate": fromdate ?? '',
-      "todate": todate ?? ''
+      "userid": username ?? ''
     };
     var bodyencode = json.encode(body);
 
     log(body.toString());
     try {
       var response = await http.post(
-        Uri.parse("http://demo.cherritech.us/api/getDetails.php"),
+        Uri.parse("http://demo.cherritech.us/api/getUser.php"),
         body: bodyencode,
         headers: {'Authorization': 'Bearer ${Constants.token}'},
       );
@@ -31,9 +32,8 @@ class DashboardService {
       var data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        return DashboardModel.fromJson(jsonDecode(response.body));
+        return UserParticipantModel.fromJson(data);
       } else {
-        Fluttertoast.showToast(msg: data["message"]);
         return null;
       }
     } catch (e) {

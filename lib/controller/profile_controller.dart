@@ -22,6 +22,7 @@ class ProfileController extends GetxController {
   TextEditingController state = TextEditingController();
   TextEditingController pincode = TextEditingController();
   TextEditingController country = TextEditingController();
+  RxString storename = ''.obs;
 
   var _listData = <ProfileModel>[];
   var item = [];
@@ -51,7 +52,7 @@ class ProfileController extends GetxController {
         pincode.text = data.data[0].zip;
         country.text = data.data[0].country;
         profileusername = data.data[0].username.toString();
-
+        storename.value = data.data[0].storename.toString();
         isProfileLoading(false);
         //Get.back();
       } else {

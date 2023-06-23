@@ -1,5 +1,6 @@
 import '../../allpackages.dart';
 import '../../controller/login_controller.dart';
+import '../dashboard/forgot_password_screen.dart';
 
 class LoginInputFields extends StatefulWidget {
   const LoginInputFields({Key? key}) : super(key: key);
@@ -106,7 +107,7 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
           SizedBox(height: 5.00.h),
           InkWell(
             onTap: () {
-              // Get.to(const ForgotPasswordScreen());
+              Get.to(const ForgotPassword());
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 14.0),
